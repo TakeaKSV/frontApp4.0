@@ -23,7 +23,7 @@ const UserModalForm: React.FC<UserModalFormProps> = ({
 }) => {
   const [form] = Form.useForm();
   const [isValid, setIsValid] = useState(false);
-  const validationTimeoutRef = useRef<NodeJS.Timeout>();
+  const validationTimeoutRef = useRef<number>(); // ✅ CAMBIADO
 
   // Solo establecer valores cuando el modal se abre
   useEffect(() => {
