@@ -4,7 +4,7 @@ import ProductModelForm from "./productModalForm";
 import ProductCreateModalForm from "./ProductCreateModalForm";
 
 export default function Productos() {
-  const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState<any[]>([]);
   const [busqueda, setBusqueda] = useState("");
   const [editingProduct, setEditingProduct] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);

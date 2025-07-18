@@ -1,6 +1,5 @@
 // appweb4/front/src/modules/report/report.tsx
 
-import React from 'react';
 
 const Report = () => {
   return (

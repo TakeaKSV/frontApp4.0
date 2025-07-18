@@ -14,7 +14,7 @@ const ProductCreateModalForm: React.FC<ProductCreateModalFormProps> = ({
 }) => {
   const [form] = Form.useForm();
   const [isValid, setIsValid] = useState(false);
-  const validationTimeoutRef = useRef<number>(); // ✅ CAMBIADO
+  const validationTimeoutRef = useRef<number>(); // Cambiar NodeJS.Timeout por number
 
   // Resetear formulario cuando se abre/cierra el modal
   useEffect(() => {
@@ -32,7 +32,7 @@ const ProductCreateModalForm: React.FC<ProductCreateModalFormProps> = ({
     if (validationTimeoutRef.current) {
       clearTimeout(validationTimeoutRef.current);
     }
-    
+
     validationTimeoutRef.current = setTimeout(() => {
       form.validateFields()
         .then(() => setIsValid(true))
@@ -43,12 +43,12 @@ const ProductCreateModalForm: React.FC<ProductCreateModalFormProps> = ({
   const handleOk = () => {
     // Si ya sabemos que es válido, no re-validar
     if (!isValid) return;
-    
+
     // Limpiar timeout pendiente para evitar conflictos
     if (validationTimeoutRef.current) {
       clearTimeout(validationTimeoutRef.current);
     }
-    
+
     // Obtener valores directamente del formulario
     const values = form.getFieldsValue();
     const product = {
@@ -91,9 +91,9 @@ const ProductCreateModalForm: React.FC<ProductCreateModalFormProps> = ({
         </Button>,
       ]}
     >
-      <Form 
-        form={form} 
-        layout="vertical" 
+      <Form
+        form={form}
+        layout="vertical"
         onFieldsChange={checkFormValidity}
       >
         <Form.Item
@@ -103,11 +103,11 @@ const ProductCreateModalForm: React.FC<ProductCreateModalFormProps> = ({
         >
           <Input placeholder="Ingrese el nombre del producto" />
         </Form.Item>
-        <Form.Item 
-          name="description" 
+        <Form.Item
+          name="description"
           label="Descripción"
         >
-          <Input.TextArea 
+          <Input.TextArea
             placeholder="Ingrese una descripción del producto (opcional)"
             rows={3}
           />
@@ -120,8 +120,8 @@ const ProductCreateModalForm: React.FC<ProductCreateModalFormProps> = ({
             { type: "number", min: 0, message: "Debe ser un número positivo" },
           ]}
         >
-          <InputNumber 
-            style={{ width: "100%" }} 
+          <InputNumber
+            style={{ width: "100%" }}
             placeholder="Ingrese la cantidad"
             min={0}
           />
@@ -134,8 +134,8 @@ const ProductCreateModalForm: React.FC<ProductCreateModalFormProps> = ({
             { type: "number", min: 0, message: "Debe ser un número positivo" },
           ]}
         >
-          <InputNumber 
-            style={{ width: "100%" }} 
+          <InputNumber
+            style={{ width: "100%" }}
             placeholder="Ingrese el precio"
             min={0}
             step={0.01}

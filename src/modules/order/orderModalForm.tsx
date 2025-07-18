@@ -24,7 +24,7 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
 }) => {
   const [form] = Form.useForm();
   const [isValid, setIsValid] = useState(false);
-  const validationTimeoutRef = useRef<number>(); // ✅ CAMBIADO
+  const validationTimeoutRef = useRef<number>(); // Cambiar NodeJS.Timeout por number
 
   // Solo establecer valores cuando el modal se abre
   useEffect(() => {
@@ -53,7 +53,7 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
     if (validationTimeoutRef.current) {
       clearTimeout(validationTimeoutRef.current);
     }
-    
+
     validationTimeoutRef.current = setTimeout(() => {
       form.validateFields()
         .then(() => setIsValid(true))
@@ -64,18 +64,18 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
   const handleOk = () => {
     // Si ya sabemos que es válido, no re-validar
     if (!isValid) return;
-    
+
     // Limpiar timeout pendiente para evitar conflictos
     if (validationTimeoutRef.current) {
       clearTimeout(validationTimeoutRef.current);
     }
-    
+
     // Obtener valores directamente del formulario
     const values = form.getFieldsValue();
-    const orderData = order 
+    const orderData = order
       ? { ...order, ...values, status: values.status === true }
       : { ...values, key: Date.now().toString(), status: values.status === true };
-    
+
     onSave(orderData);
   };
 
@@ -124,8 +124,8 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
             { type: "number", min: 0, message: "Debe ser un número positivo" }
           ]}
         >
-          <InputNumber 
-            style={{ width: "100%" }} 
+          <InputNumber
+            style={{ width: "100%" }}
             placeholder="Ingrese el subtotal"
             min={0}
             step={0.01}
@@ -140,8 +140,8 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
             { type: "number", min: 0, message: "Debe ser un número positivo" }
           ]}
         >
-          <InputNumber 
-            style={{ width: "100%" }} 
+          <InputNumber
+            style={{ width: "100%" }}
             placeholder="Ingrese el total"
             min={0}
             step={0.01}

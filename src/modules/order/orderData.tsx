@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "antd";
-import OrderModalForm from "./OrderModalForm";
+import OrderModalForm from "./orderModalForm";
 import OrderCreateModalForm from "./OrderCreateModalForm";
 
 export default function OrderData() {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<any[]>([]);
   const [editingOrder, setEditingOrder] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [createVisible, setCreateVisible] = useState(false);

@@ -4,7 +4,7 @@ import UserModalForm from "./userModalForm";
 import UserCreateModalForm from "./UserCreateModalForm";
 
 export default function UserData() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<any[]>([]); // ✅ Solo agregar <any[]>
   const [editingUser, setEditingUser] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [createModalVisible, setCreateModalVisible] = useState(false);

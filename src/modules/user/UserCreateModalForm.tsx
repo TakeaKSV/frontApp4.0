@@ -14,7 +14,7 @@ const UserCreateModalForm: React.FC<UserCreateModalFormProps> = ({
 }) => {
   const [form] = Form.useForm();
   const [isValid, setIsValid] = useState(false);
-  const validationTimeoutRef = useRef<number>(); // ✅ ÚNICO CAMBIO
+  const validationTimeoutRef = useRef<number>(); // Cambiar NodeJS.Timeout por number
 
   // Resetear formulario cuando se cierra el modal
   useEffect(() => {
