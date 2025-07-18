@@ -24,7 +24,7 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
 }) => {
   const [form] = Form.useForm();
   const [isValid, setIsValid] = useState(false);
-  const validationTimeoutRef = useRef<number>(); // Cambiar NodeJS.Timeout por number
+  const validationTimeoutRef = useRef<number | undefined>(undefined);
 
   // Solo establecer valores cuando el modal se abre
   useEffect(() => {
