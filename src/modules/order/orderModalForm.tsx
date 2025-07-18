@@ -36,7 +36,7 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
           status: order.status
         });
         // Si hay orden, validar inmediatamente
-        setTimeout(() => checkFormValidity(), 50);
+        window.setTimeout(() => checkFormValidity(), 50);
       } else {
         form.resetFields();
         // Si no hay orden, el formulario está vacío = inválido
@@ -54,7 +54,7 @@ const OrderModalForm: React.FC<OrderModalFormProps> = ({
       clearTimeout(validationTimeoutRef.current);
     }
 
-    validationTimeoutRef.current = setTimeout(() => {
+    validationTimeoutRef.current = window.setTimeout(() => {
       form.validateFields()
         .then(() => setIsValid(true))
         .catch(() => setIsValid(false));

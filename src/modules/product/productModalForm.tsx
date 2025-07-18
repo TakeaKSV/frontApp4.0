@@ -23,7 +23,7 @@ const ProductModelForm: React.FC<ProductModelFormProps> = ({
 }) => {
   const [form] = Form.useForm();
   const [isValid, setIsValid] = useState(false);
-  const validationTimeoutRef = useRef<number>(); // Cambiar NodeJS.Timeout por number
+  const validationTimeoutRef = useRef<number>(); // ✅ OK
 
   // Solo establecer valores cuando el modal se abre
   useEffect(() => {
@@ -34,7 +34,7 @@ const ProductModelForm: React.FC<ProductModelFormProps> = ({
           amount: product.amount
         });
         // Si hay producto, validar inmediatamente
-        setTimeout(() => checkFormValidity(), 50);
+        window.setTimeout(() => checkFormValidity(), 50); // ✅ CAMBIADO
       } else {
         form.resetFields();
         // Si no hay producto, el formulario está vacío = inválido
@@ -52,7 +52,7 @@ const ProductModelForm: React.FC<ProductModelFormProps> = ({
       clearTimeout(validationTimeoutRef.current);
     }
     
-    validationTimeoutRef.current = setTimeout(() => {
+    validationTimeoutRef.current = window.setTimeout(() => { // ✅ CAMBIADO
       form.validateFields()
         .then(() => setIsValid(true))
         .catch(() => setIsValid(false));

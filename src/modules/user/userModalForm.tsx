@@ -23,7 +23,7 @@ const UserModalForm: React.FC<UserModalFormProps> = ({
 }) => {
   const [form] = Form.useForm();
   const [isValid, setIsValid] = useState(false);
-  const validationTimeoutRef = useRef<number>(); // Cambiar NodeJS.Timeout por number
+  const validationTimeoutRef = useRef<number>(); // ✅ OK
 
   // Solo establecer valores cuando el modal se abre
   useEffect(() => {
@@ -34,7 +34,7 @@ const UserModalForm: React.FC<UserModalFormProps> = ({
           email: user.email
         });
         // Si hay usuario, validar inmediatamente
-        setTimeout(() => checkFormValidity(), 50);
+        window.setTimeout(() => checkFormValidity(), 50); // ✅ CAMBIADO
       } else {
         form.resetFields();
         // Si no hay usuario, el formulario está vacío = inválido
@@ -52,7 +52,7 @@ const UserModalForm: React.FC<UserModalFormProps> = ({
       clearTimeout(validationTimeoutRef.current);
     }
     
-    validationTimeoutRef.current = setTimeout(() => {
+    validationTimeoutRef.current = window.setTimeout(() => { // ✅ CAMBIADO
       form.validateFields()
         .then(() => setIsValid(true))
         .catch(() => setIsValid(false));

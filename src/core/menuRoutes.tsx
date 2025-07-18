@@ -8,8 +8,8 @@ import React from 'react';
 // ===================================================================================
 import Dashboard from '../modules/dashboard/dashboard';
 import UserForm from '../modules/user/userForm';
-import Product from '../modules/product/product';
 import Order from '../modules/order/order';
+import Product from '../modules/product/product';
 import Report from '../modules/report/report'; // ¡NUEVA IMPORTACIÓN para Reportes!
 
 // Definición de la interfaz para las rutas
